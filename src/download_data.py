@@ -20,10 +20,10 @@ def main():
 
     if args.model:
         print("Loading model...")
-        load_data(path='data/decision_tree', key='model.pkl')
+        load_data(path='../data/decision_tree', key='model.pkl')
     else:
         print("Loading input data...")
-        load_data(path='data/raw', key='store47-2016.csv')
+        load_data(path='../data/raw', key='store47-2016.csv')
     print("Finished downloading")
 
 

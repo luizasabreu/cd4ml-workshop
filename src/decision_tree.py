@@ -18,11 +18,11 @@ class Model(Enum):
 
 
 def load_data():
-    filename = "data/splitter/train.csv"
+    filename = "../data/splitter/train.csv"
     print("Loading data from {}".format(filename))
     train = pd.read_csv(filename)
 
-    filename = 'data/splitter/validation.csv'
+    filename = '../data/splitter/validation.csv'
     print("Loading data from {}".format(filename))
     validate = pd.read_csv(filename)
 
@@ -101,16 +101,16 @@ def make_predictions(model, validate):
 
 def write_predictions_and_score(evaluation_metrics, model, columns_used):
     key = "decision_tree"
-    if not os.path.exists('data/{}'.format(key)):
-        os.makedirs('data/{}'.format(key))
-    filename = 'data/{}/model.pkl'.format(key)
+    if not os.path.exists('../data/{}'.format(key)):
+        os.makedirs('../data/{}'.format(key))
+    filename = '../data/{}/model.pkl'.format(key)
     print("Writing to {}".format(filename))
     joblib.dump(model, filename)
 
-    filename = 'results/metrics.json'
+    filename = '../results/metrics.json'
     print("Writing to {}".format(filename))
-    if not os.path.exists('results'):
-        os.makedirs('results')
+    if not os.path.exists('../results'):
+        os.makedirs('../results')
     with open(filename, 'w+') as score_file:
         json.dump(evaluation_metrics, score_file)
 
@@ -137,4 +137,4 @@ def main(model=Model.DECISION_TREE, seed=None):
 
 
 if __name__ == "__main__":
-    main(model=Model.DECISION_TREE, seed=8675309)
+    main(model=Model.RANDOM_FOREST, seed=8675309)

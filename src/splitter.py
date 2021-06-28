@@ -16,16 +16,16 @@ def split_validation_train_by_validation_period(train, validation_begin_date, va
 
 
 def write_data(table, filename):
-    if not os.path.exists('data/splitter'):
-        os.makedirs('data/splitter')
+    if not os.path.exists('../data/splitter'):
+        os.makedirs('../data/splitter')
 
     print("Writing to data/splitter/{}".format(filename))
-    table.to_csv('data/splitter/' + filename, index=False)
+    table.to_csv('../data/splitter/' + filename, index=False)
 
 
 def main():
     print("Loading data...")
-    train = pd.read_csv("data/raw/store47-2016.csv")
+    train = pd.read_csv("../data/raw/store47-2016.csv")
 
     train['date'] = pd.to_datetime(train['date'], format="%Y-%m-%d")
 
